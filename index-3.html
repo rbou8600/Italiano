@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quaderno italiano — Grammatica B1/B2</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  --bg:#F6F1E7;--bg-card:#FFFCF6;--ink:#232017;--ink-soft:#5C5848;
+  --olive:#5C6B47;--olive-deep:#404A32;--olive-pale:#E4E8D8;
+  --brick:#A3402E;--brick-pale:#F6E2DD;--gold:#B8893E;--gold-pale:#F2E6CE;
+  --line:rgba(35,32,23,0.13);--line-soft:rgba(35,32,23,0.07);
+  --serif:'Fraunces',Georgia,serif;--sans:'Source Sans 3',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px;}
+
+/* TOPBAR */
+header.topbar{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--line);}
+.topbar-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+.brand{font-family:var(--serif);font-weight:600;font-size:21px;color:var(--olive-deep);letter-spacing:-0.01em;display:flex;align-items:baseline;gap:8px;cursor:pointer;}
+.brand .flag-dot{display:inline-flex;gap:3px;}
+.brand .flag-dot span{width:6px;height:6px;border-radius:50%;display:inline-block;}
+nav.modlinks{display:flex;gap:4px;flex-wrap:wrap;}
+nav.modlinks button{font-family:var(--sans);font-size:13px;font-weight:500;background:none;border:1px solid transparent;color:var(--ink-soft);padding:6px 10px;border-radius:7px;cursor:pointer;transition:all .15s;}
+nav.modlinks button:hover{background:var(--olive-pale);color:var(--olive-deep);}
+nav.modlinks button.active{background:var(--olive-deep);color:var(--bg-card);}
+main{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.view{display:none;animation:fadein .25s ease;}
+.view.active{display:block;}
+@keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* HOME */
+.home-hero{padding:56px 0 28px;}
+.home-hero .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--olive);margin-bottom:14px;display:block;}
+.home-hero h1{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--ink);line-height:1.08;max-width:600px;letter-spacing:-0.01em;}
+.home-hero h1 em{font-style:italic;color:var(--olive-deep);}
+.home-hero p.lede{font-size:17px;color:var(--ink-soft);max-width:520px;margin-top:16px;}
+.quaderno{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:36px;}
+.mod-card{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:22px 22px 20px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
+.mod-card:hover{border-color:var(--olive);transform:translateY(-2px);box-shadow:0 6px 18px rgba(35,32,23,.06);}
+.mod-card .num{font-family:var(--mono);font-size:12px;color:var(--ink-soft);opacity:.55;}
+.mod-card h3{font-family:var(--serif);font-size:20px;font-weight:600;margin:8px 0 6px;color:var(--ink);}
+.mod-card p{font-size:14px;color:var(--ink-soft);}
+.mod-card .tag{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:5px;background:var(--olive-pale);color:var(--olive-deep);}
+
+/* SECTION */
+.mod-header{padding:44px 0 8px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+.mod-header .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;display:block;}
+.mod-header h2{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--ink);margin-bottom:10px;}
+.mod-header p{font-size:15.5px;color:var(--ink-soft);max-width:640px;padding-bottom:24px;}
+section.block{margin-bottom:48px;}
+section.block h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--olive-deep);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line-soft);}
+section.block h4{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--ink);margin:18px 0 8px;}
+section.block p{font-size:15px;color:var(--ink-soft);margin-bottom:12px;}
+section.block p.note{background:var(--gold-pale);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 6px 6px 0;font-size:14px;color:#5A4220;}
+section.block p.alert{background:var(--brick-pale);border-left:3px solid var(--brick);padding:10px 14px;border-radius:0 6px 6px 0;font-size:14px;color:#6B2010;}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--line);border-radius:10px;}
+table.conj{width:100%;border-collapse:collapse;background:var(--bg-card);font-size:14.5px;}
+table.conj caption{font-family:var(--sans);font-weight:600;font-size:13px;text-align:left;padding:10px 16px;color:var(--ink);background:var(--olive-pale);caption-side:top;}
+table.conj th{text-align:left;padding:9px 16px;font-weight:600;font-size:12.5px;color:var(--ink-soft);border-bottom:1px solid var(--line);white-space:nowrap;}
+table.conj td{padding:9px 16px;border-bottom:1px solid var(--line-soft);white-space:nowrap;}
+table.conj tr:last-child td{border-bottom:none;}
+table.conj td.pron{color:var(--ink-soft);font-size:13.5px;}
+table.conj .root{color:var(--ink);}
+table.conj .end{font-family:var(--mono);font-weight:500;color:var(--olive-deep);background:var(--olive-pale);padding:1px 5px;border-radius:4px;font-size:13px;}
+table.conj .irr .end{color:var(--brick);background:var(--brick-pale);}
+
+/* PRONOUN GRID */
+.pron-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 20px;}
+.pron-cell{background:var(--bg-card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;}
+.pron-cell .who{font-size:12.5px;color:var(--ink-soft);}
+.pron-cell .form{font-family:var(--mono);font-size:17px;color:var(--olive-deep);font-weight:500;margin-top:3px;}
+
+/* EXAMPLES */
+ul.examples{list-style:none;margin:10px 0 16px;}
+ul.examples li{padding:9px 0 9px 18px;border-bottom:1px dashed var(--line-soft);font-size:14.5px;position:relative;color:var(--ink);}
+ul.examples li::before{content:"—";position:absolute;left:0;color:var(--olive);}
+ul.examples li .it{font-style:italic;color:var(--ink);}
+ul.examples li .fr{color:var(--ink-soft);font-size:13.5px;}
+ul.examples li:last-child{border-bottom:none;}
+
+/* USAGE CARDS */
+.usage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 20px;}
+.usage-card{background:var(--bg-card);border:1px solid var(--line);border-radius:9px;padding:16px 18px;}
+.usage-card .lbl{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--olive);}
+.usage-card p{font-size:14px;margin:6px 0 0;color:var(--ink);}
+.usage-card .ex{font-size:13px;color:var(--ink-soft);font-style:italic;margin-top:6px;}
+
+/* VOC CARDS */
+.voc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 20px;}
+.voc-card{background:var(--bg-card);border:1px solid var(--line);border-radius:9px;padding:14px 16px;cursor:pointer;transition:all .15s;}
+.voc-card:hover{border-color:var(--olive);}
+.voc-card .it-word{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--olive-deep);}
+.voc-card .it-phon{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-top:2px;}
+.voc-card .it-trans{font-size:13.5px;color:var(--ink-soft);margin-top:6px;display:none;}
+.voc-card.revealed .it-trans{display:block;}
+.voc-card .reveal-hint{font-size:11px;color:var(--olive);margin-top:8px;font-family:var(--mono);}
+
+/* EXERCISES */
+.exo-block{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-bottom:18px;}
+.exo-block .exo-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.exo-block .exo-head h4{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);}
+.exo-block .exo-sub{font-size:13px;color:var(--ink-soft);margin-bottom:18px;}
+.q{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--line-soft);}
+.q:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.q .qtext{font-size:15px;margin-bottom:10px;color:var(--ink);}
+.q .qtext em{font-style:italic;color:var(--olive-deep);}
+.opt-row{display:flex;gap:8px;flex-wrap:wrap;}
+.opt{font-family:var(--sans);font-size:14px;padding:7px 14px;border-radius:7px;border:1px solid var(--line);background:var(--bg);cursor:pointer;transition:all .12s;}
+.opt:hover{border-color:var(--olive);}
+.opt.selected{border-color:var(--olive-deep);background:var(--olive-pale);}
+.opt.correct{border-color:var(--olive-deep);background:var(--olive-pale);color:var(--olive-deep);font-weight:500;}
+.opt.incorrect{border-color:var(--brick);background:var(--brick-pale);color:var(--brick);}
+.opt.show-correct{border-color:var(--olive-deep);background:var(--olive-pale);color:var(--olive-deep);}
+.exo-actions{display:flex;align-items:center;gap:14px;margin-top:16px;}
+button.check-btn{font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--bg-card);background:var(--olive-deep);border:none;padding:9px 18px;border-radius:7px;cursor:pointer;}
+button.check-btn:hover{background:var(--olive);}
+button.reset-btn{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);background:none;border:none;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);}
+.score-pill{font-family:var(--mono);font-size:13px;padding:5px 12px;border-radius:20px;background:var(--gold-pale);color:#5A4220;display:none;}
+.score-pill.show{display:inline-block;}
+.feedback-line{font-size:13px;margin-top:6px;display:none;}
+.feedback-line.show{display:block;}
+.feedback-line.ok{color:var(--olive-deep);}
+.feedback-line.bad{color:var(--brick);}
+
+footer{text-align:center;padding:30px 0;color:var(--ink-soft);font-size:13px;}
+
+@media(max-width:640px){
+  .topbar-inner{flex-direction:column;gap:10px;align-items:flex-start;}
+  nav.modlinks{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+  nav.modlinks button{white-space:nowrap;flex-shrink:0;}
+  .home-hero h1{font-size:32px;}
+  .home-hero{padding:36px 0 20px;}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand" onclick="showView('home')">
+      <span class="flag-dot">
+        <span style="background:#5C6B47"></span>
+        <span style="background:#F6F1E7;border:1px solid #ddd"></span>
+        <span style="background:#A3402E"></span>
+      </span>
+      Quaderno italiano
+    </div>
+    <nav class="modlinks" id="navlinks"></nav>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<footer>Quaderno italiano — Grammatica B1/B2 · Tutti i diritti riservati</footer>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const MODULES = [
+  { id:'home', label:'Sommario', nav:false },
+  { id:'congiuntivo', label:'Congiuntivo', tag:'B1', nav:true },
+  { id:'condizionale', label:'Condizionale', tag:'B1', nav:true },
+  { id:'imperativo', label:'Imperativo', tag:'B1/B2', nav:true },
+  { id:'pronomi', label:'Pronomi', tag:'B1', nav:true },
+  { id:'modo', label:'Indicativo vs Congiuntivo vs Condizionale', tag:'B2', nav:true },
+  { id:'vocabolario', label:'Vocabolario', tag:'B1/B2', nav:true },
+];
+
+// ============================================================
+// RENDER UTILITIES
+// ============================================================
+function renderNav(){
+  const nav = document.getElementById('navlinks');
+  nav.innerHTML = '';
+  MODULES.filter(m=>m.nav).forEach(m=>{
+    const b = document.createElement('button');
+    b.textContent = m.label;
+    b.dataset.view = m.id;
+    b.onclick = ()=>showView(m.id);
+    nav.appendChild(b);
+  });
+}
+
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('nav.modlinks button').forEach(b=>b.classList.remove('active'));
+  const v = document.getElementById('view-'+id);
+  if(v) v.classList.add('active');
+  const b = document.querySelector(`nav.modlinks button[data-view="${id}"]`);
+  if(b) b.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function qcm(containerId, questions){
+  // questions = [{q, opts:['a','b','c','d'], ans: index}]
+  const wrap = document.getElementById(containerId);
+  if(!wrap) return;
+  const pid = 'p_'+containerId;
+  let html = '';
+  questions.forEach((item,qi)=>{
+    html += `<div class="q" id="${pid}_q${qi}">
+      <div class="qtext">${qi+1}. ${item.q}</div>
+      <div class="opt-row">`;
+    item.opts.forEach((opt,oi)=>{
+      html += `<button class="opt" data-qi="${qi}" data-oi="${oi}" onclick="selectOpt('${pid}',${qi},${oi})">${opt}</button>`;
+    });
+    html += `</div><div class="feedback-line" id="${pid}_fb${qi}"></div></div>`;
+  });
+  html += `<div class="exo-actions">
+    <button class="check-btn" onclick="checkQcm('${pid}',${JSON.stringify(questions).replace(/'/g,"&#39;")})">Verifica</button>
+    <button class="reset-btn" onclick="resetQcm('${pid}',${JSON.stringify(questions).replace(/'/g,"&#39;")})">Ricomincia</button>
+    <span class="score-pill" id="${pid}_score"></span>
+  </div>`;
+  wrap.innerHTML = html;
+}
+
+function selectOpt(pid,qi,oi){
+  document.querySelectorAll(`[data-qi="${qi}"][id^="${pid}"], .opt[data-qi="${qi}"]`).forEach(()=>{});
+  const row = document.querySelectorAll(`#${pid}_q${qi} .opt`);
+  row.forEach(b=>b.classList.remove('selected'));
+  const chosen = document.querySelector(`#${pid}_q${qi} .opt[data-oi="${oi}"]`);
+  if(chosen) chosen.classList.add('selected');
+}
+
+function checkQcm(pid, questions){
+  let score=0;
+  questions.forEach((item,qi)=>{
+    const sel = document.querySelector(`#${pid}_q${qi} .opt.selected`);
+    const fb = document.getElementById(`${pid}_fb${qi}`);
+    const allOpts = document.querySelectorAll(`#${pid}_q${qi} .opt`);
+    allOpts.forEach(b=>b.classList.remove('correct','incorrect','show-correct'));
+    allOpts[item.ans].classList.add('show-correct');
+    if(sel){
+      const oi = parseInt(sel.dataset.oi);
+      if(oi===item.ans){score++;sel.classList.add('correct');fb.className='feedback-line show ok';fb.textContent='✓ Corretto!';}
+      else{sel.classList.add('incorrect');fb.className='feedback-line show bad';fb.textContent='✗ Riprova. Risposta corretta: '+item.opts[item.ans];}
+    } else {
+      fb.className='feedback-line show bad';fb.textContent='✗ Nessuna risposta. Risposta corretta: '+item.opts[item.ans];
+    }
+  });
+  const pill = document.getElementById(`${pid}_score`);
+  pill.textContent=`${score} / ${questions.length}`;pill.classList.add('show');
+}
+
+function resetQcm(pid, questions){
+  document.querySelectorAll(`[id^="${pid}_q"] .opt`).forEach(b=>b.classList.remove('selected','correct','incorrect','show-correct'));
+  document.querySelectorAll(`[id^="${pid}_fb"]`).forEach(fb=>{fb.className='feedback-line';fb.textContent='';});
+  const pill = document.getElementById(`${pid}_score`);
+  if(pill){pill.classList.remove('show');pill.textContent='';}
+}
+
+// ============================================================
+// VIEWS HTML
+// ============================================================
+const views = {};
+
+// ---------- HOME ----------
+views['home'] = `
+<div class="home-hero">
+  <span class="eyebrow">Grammatica interattiva B1/B2</span>
+  <h1>Il tuo <em>quaderno</em><br>di italiano</h1>
+  <p class="lede">Rivedi la grammatica essenziale, amplia il vocabolario e metti alla prova le tue conoscenze con esercizi interattivi.</p>
+</div>
+<div class="quaderno">
+  <div class="mod-card" onclick="showView('congiuntivo')">
+    <div class="num">01</div><h3>Congiuntivo</h3><p>Presente, passato, imperfetto e trapassato con tutti i verbi irregolari.</p><span class="tag">B1</span>
+  </div>
+  <div class="mod-card" onclick="showView('condizionale')">
+    <div class="num">02</div><h3>Condizionale</h3><p>Condizionale presente e passato, uso nelle frasi ipotetiche.</p><span class="tag">B1</span>
+  </div>
+  <div class="mod-card" onclick="showView('imperativo')">
+    <div class="num">03</div><h3>Imperativo</h3><p>Affermativo, negativo, formale, informale, con pronomi clitici.</p><span class="tag">B1/B2</span>
+  </div>
+  <div class="mod-card" onclick="showView('pronomi')">
+    <div class="num">04</div><h3>Pronomi</h3><p>Pronomi diretti, indiretti, combinati e clitici nella frase.</p><span class="tag">B1</span>
+  </div>
+  <div class="mod-card" onclick="showView('modo')">
+    <div class="num">05</div><h3>Quale modo scegliere?</h3><p>Espressioni che reggono indicativo, congiuntivo o condizionale.</p><span class="tag">B2</span>
+  </div>
+  <div class="mod-card" onclick="showView('vocabolario')">
+    <div class="num">06</div><h3>Vocabolario tematico</h3><p>Parole chiave per argomenti B1/B2: lavoro, emozioni, città, ambiente.</p><span class="tag">B1/B2</span>
+  </div>
+</div>`;
+
+// ---------- CONGIUNTIVO ----------
+views['congiuntivo'] = `
+<div class="mod-header">
+  <span class="eyebrow">Unità 01 · Modo verbale</span>
+  <h2>Il Congiuntivo</h2>
+  <p>Il congiuntivo esprime dubbio, desiderio, opinione, emozione o ipotesi. Si usa principalmente nelle proposizioni subordinate introdotte da <em>che</em>.</p>
+</div>
+
+<section class="block">
+  <h3>Congiuntivo presente — regolare</h3>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Terminazioni del congiuntivo presente</caption>
+    <thead><tr><th>Pronome</th><th>-ARE (parlare)</th><th>-ERE (credere)</th><th>-IRE (partire)</th><th>-IRE isc (finire)</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">io</td><td><span class="root">parl</span><span class="end">i</span></td><td><span class="root">cred</span><span class="end">a</span></td><td><span class="root">part</span><span class="end">a</span></td><td><span class="root">fin</span><span class="end">isca</span></td></tr>
+      <tr><td class="pron">tu</td><td><span class="root">parl</span><span class="end">i</span></td><td><span class="root">cred</span><span class="end">a</span></td><td><span class="root">part</span><span class="end">a</span></td><td><span class="root">fin</span><span class="end">isca</span></td></tr>
+      <tr><td class="pron">lui/lei</td><td><span class="root">parl</span><span class="end">i</span></td><td><span class="root">cred</span><span class="end">a</span></td><td><span class="root">part</span><span class="end">a</span></td><td><span class="root">fin</span><span class="end">isca</span></td></tr>
+      <tr><td class="pron">noi</td><td><span class="root">parl</span><span class="end">iamo</span></td><td><span class="root">cred</span><span class="end">iamo</span></td><td><span class="root">part</span><span class="end">iamo</span></td><td><span class="root">fin</span><span class="end">iamo</span></td></tr>
+      <tr><td class="pron">voi</td><td><span class="root">parl</span><span class="end">iate</span></td><td><span class="root">cred</span><span class="end">iate</span></td><td><span class="root">part</span><span class="end">iate</span></td><td><span class="root">fin</span><span class="end">iate</span></td></tr>
+      <tr><td class="pron">loro</td><td><span class="root">parl</span><span class="end">ino</span></td><td><span class="root">cred</span><span class="end">ano</span></td><td><span class="root">part</span><span class="end">ano</span></td><td><span class="root">fin</span><span class="end">iscano</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Verbi irregolari al congiuntivo presente</h3>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Irregolari più comuni</caption>
+    <thead><tr><th>Verbo</th><th>io</th><th>tu</th><th>lui/lei</th><th>noi</th><th>voi</th><th>loro</th></tr></thead>
+    <tbody>
+      <tr class="irr"><td>essere</td><td><span class="end">sia</span></td><td><span class="end">sia</span></td><td><span class="end">sia</span></td><td><span class="end">siamo</span></td><td><span class="end">siate</span></td><td><span class="end">siano</span></td></tr>
+      <tr class="irr"><td>avere</td><td><span class="end">abbia</span></td><td><span class="end">abbia</span></td><td><span class="end">abbia</span></td><td><span class="end">abbiamo</span></td><td><span class="end">abbiate</span></td><td><span class="end">abbiano</span></td></tr>
+      <tr class="irr"><td>fare</td><td><span class="end">faccia</span></td><td><span class="end">faccia</span></td><td><span class="end">faccia</span></td><td><span class="end">facciamo</span></td><td><span class="end">facciate</span></td><td><span class="end">facciano</span></td></tr>
+      <tr class="irr"><td>andare</td><td><span class="end">vada</span></td><td><span class="end">vada</span></td><td><span class="end">vada</span></td><td><span class="end">andiamo</span></td><td><span class="end">andiate</span></td><td><span class="end">vadano</span></td></tr>
+      <tr class="irr"><td>venire</td><td><span class="end">venga</span></td><td><span class="end">venga</span></td><td><span class="end">venga</span></td><td><span class="end">veniamo</span></td><td><span class="end">veniate</span></td><td><span class="end">vengano</span></td></tr>
+      <tr class="irr"><td>sapere</td><td><span class="end">sappia</span></td><td><span class="end">sappia</span></td><td><span class="end">sappia</span></td><td><span class="end">sappiamo</span></td><td><span class="end">sappiate</span></td><td><span class="end">sappiano</span></td></tr>
+      <tr class="irr"><td>volere</td><td><span class="end">voglia</span></td><td><span class="end">voglia</span></td><td><span class="end">voglia</span></td><td><span class="end">vogliamo</span></td><td><span class="end">vogliate</span></td><td><span class="end">vogliano</span></td></tr>
+      <tr class="irr"><td>potere</td><td><span class="end">possa</span></td><td><span class="end">possa</span></td><td><span class="end">possa</span></td><td><span class="end">possiamo</span></td><td><span class="end">possiate</span></td><td><span class="end">possano</span></td></tr>
+      <tr class="irr"><td>dovere</td><td><span class="end">debba</span></td><td><span class="end">debba</span></td><td><span class="end">debba</span></td><td><span class="end">dobbiamo</span></td><td><span class="end">dobbiate</span></td><td><span class="end">debbano</span></td></tr>
+      <tr class="irr"><td>dire</td><td><span class="end">dica</span></td><td><span class="end">dica</span></td><td><span class="end">dica</span></td><td><span class="end">diciamo</span></td><td><span class="end">diciate</span></td><td><span class="end">dicano</span></td></tr>
+      <tr class="irr"><td>uscire</td><td><span class="end">esca</span></td><td><span class="end">esca</span></td><td><span class="end">esca</span></td><td><span class="end">usciamo</span></td><td><span class="end">usciate</span></td><td><span class="end">escano</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Congiuntivo passato</h3>
+  <p>Si forma con il <strong>congiuntivo presente</strong> di <em>avere</em> o <em>essere</em> + participio passato.</p>
+  <ul class="examples">
+    <li><span class="it">Penso che Marco abbia già mangiato.</span><span class="fr"> — Credo che Marco abbia già mangiato.</span></li>
+    <li><span class="it">È strano che lei non sia ancora arrivata.</span><span class="fr"> — È strano che non sia arrivata.</span></li>
+  </ul>
+
+  <h3>Congiuntivo imperfetto</h3>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Terminazioni dell'imperfetto congiuntivo</caption>
+    <thead><tr><th>Pronome</th><th>-ARE (parlare)</th><th>-ERE (credere)</th><th>-IRE (partire)</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">io</td><td><span class="root">parl</span><span class="end">assi</span></td><td><span class="root">cred</span><span class="end">essi</span></td><td><span class="root">part</span><span class="end">issi</span></td></tr>
+      <tr><td class="pron">tu</td><td><span class="root">parl</span><span class="end">assi</span></td><td><span class="root">cred</span><span class="end">essi</span></td><td><span class="root">part</span><span class="end">issi</span></td></tr>
+      <tr><td class="pron">lui/lei</td><td><span class="root">parl</span><span class="end">asse</span></td><td><span class="root">cred</span><span class="end">esse</span></td><td><span class="root">part</span><span class="end">isse</span></td></tr>
+      <tr><td class="pron">noi</td><td><span class="root">parl</span><span class="end">assimo</span></td><td><span class="root">cred</span><span class="end">essimo</span></td><td><span class="root">part</span><span class="end">issimo</span></td></tr>
+      <tr><td class="pron">voi</td><td><span class="root">parl</span><span class="end">aste</span></td><td><span class="root">cred</span><span class="end">este</span></td><td><span class="root">part</span><span class="end">iste</span></td></tr>
+      <tr><td class="pron">loro</td><td><span class="root">parl</span><span class="end">assero</span></td><td><span class="root">cred</span><span class="end">essero</span></td><td><span class="root">part</span><span class="end">issero</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">⚠ I verbi irregolari come <em>essere</em> (fossi), <em>fare</em> (facessi), <em>dire</em> (dicessi) si formano dalla radice storica, non dall'infinito moderno.</p>
+</section>
+
+<section class="block">
+  <h3>Esercizio — Congiuntivo presente (QCM)</h3>
+  <div class="exo-block">
+    <div class="exo-head"><h4>Scegli la forma corretta</h4></div>
+    <div class="exo-sub">Seleziona la risposta giusta per ogni frase.</div>
+    <div id="qcm_cong"></div>
+  </div>
+</section>`;
+
+// ---------- CONDIZIONALE ----------
+views['condizionale'] = `
+<div class="mod-header">
+  <span class="eyebrow">Unità 02 · Modo verbale</span>
+  <h2>Il Condizionale</h2>
+  <p>Il condizionale esprime un'azione possibile, ipotetica, desiderata o educata. Esiste in due tempi: presente e passato.</p>
+</div>
+
+<section class="block">
+  <h3>Condizionale presente — regolare</h3>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Terminazioni del condizionale presente (identiche per tutti i verbi regolari)</caption>
+    <thead><tr><th>Pronome</th><th>-ARE (parlare)</th><th>-ERE (credere)</th><th>-IRE (partire)</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">io</td><td><span class="root">parler</span><span class="end">ei</span></td><td><span class="root">creder</span><span class="end">ei</span></td><td><span class="root">partir</span><span class="end">ei</span></td></tr>
+      <tr><td class="pron">tu</td><td><span class="root">parler</span><span class="end">esti</span></td><td><span class="root">creder</span><span class="end">esti</span></td><td><span class="root">partir</span><span class="end">esti</span></td></tr>
+      <tr><td class="pron">lui/lei</td><td><span class="root">parler</span><span class="end">ebbe</span></td><td><span class="root">creder</span><span class="end">ebbe</span></td><td><span class="root">partir</span><span class="end">ebbe</span></td></tr>
+      <tr><td class="pron">noi</td><td><span class="root">parler</span><span class="end">emmo</span></td><td><span class="root">creder</span><span class="end">emmo</span></td><td><span class="root">partir</span><span class="end">emmo</span></td></tr>
+      <tr><td class="pron">voi</td><td><span class="root">parler</span><span class="end">este</span></td><td><span class="root">creder</span><span class="end">este</span></td><td><span class="root">partir</span><span class="end">este</span></td></tr>
+      <tr><td class="pron">loro</td><td><span class="root">parler</span><span class="end">ebbero</span></td><td><span class="root">creder</span><span class="end">ebbero</span></td><td><span class="root">partir</span><span class="end">ebbero</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Irregolari principali</h3>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Radici irregolari del condizionale</caption>
+    <thead><tr><th>Infinito</th><th>Radice</th><th>io</th><th>lui/lei</th><th>loro</th></tr></thead>
+    <tbody>
+      <tr class="irr"><td>essere</td><td>sar-</td><td><span class="end">sarei</span></td><td><span class="end">sarebbe</span></td><td><span class="end">sarebbero</span></td></tr>
+      <tr class="irr"><td>avere</td><td>avr-</td><td><span class="end">avrei</span></td><td><span class="end">avrebbe</span></td><td><span class="end">avrebbero</span></td></tr>
+      <tr class="irr"><td>fare</td><td>far-</td><td><span class="end">farei</span></td><td><span class="end">farebbe</span></td><td><span class="end">farebbero</span></td></tr>
+      <tr class="irr"><td>andare</td><td>andr-</td><td><span class="end">andrei</span></td><td><span class="end">andrebbe</span></td><td><span class="end">andrebbero</span></td></tr>
+      <tr class="irr"><td>venire</td><td>verr-</td><td><span class="end">verrei</span></td><td><span class="end">verrebbe</span></td><td><span class="end">verrebbero</span></td></tr>
+      <tr class="irr"><td>potere</td><td>potr-</td><td><span class="end">potrei</span></td><td><span class="end">potrebbe</span></td><td><span class="end">potrebbero</span></td></tr>
+      <tr class="irr"><td>volere</td><td>vorr-</td><td><span class="end">vorrei</span></td><td><span class="end">vorrebbe</span></td><td><span class="end">vorrebbero</span></td></tr>
+      <tr class="irr"><td>dovere</td><td>dovr-</td><td><span class="end">dovrei</span></td><td><span class="end">dovrebbe</span></td><td><span class="end">dovrebbero</span></td></tr>
+      <tr class="irr"><td>sapere</td><td>sapr-</td><td><span class="end">saprei</span></td><td><span class="end">saprebbe</span></td><td><span class="end">saprebbero</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Condizionale passato</h3>
+  <p>Si forma con <strong>condizionale presente</strong> di <em>avere</em>/<em>essere</em> + <strong>participio passato</strong>.</p>
+  <ul class="examples">
+    <li><span class="it">Sarei venuto, ma ero stanco.</span><span class="fr"> — Sarei venuto, ma ero stanco.</span></li>
+    <li><span class="it">Avrei mangiato, ma non avevo fame.</span><span class="fr"> — Avrei mangiato di più.</span></li>
+  </ul>
+
+  <h3>Usi principali del condizionale</h3>
+  <div class="usage-grid">
+    <div class="usage-card"><div class="lbl">Desiderio / Cortesia</div><p><em>Vorrei un caffè, per favore.</em></p><div class="ex">Azione desiderata, tono educato.</div></div>
+    <div class="usage-card"><div class="lbl">Ipotesi (periodo ipotetico)</div><p><em>Se avessi tempo, studierei di più.</em></p><div class="ex">Condizione irreale o possibile nel presente.</div></div>
+    <div class="usage-card"><div class="lbl">Notizia non confermata</div><p><em>Il presidente avrebbe firmato la legge.</em></p><div class="ex">Usato nei media per notizie non confermate.</div></div>
+    <div class="usage-card"><div class="lbl">Consiglio</div><p><em>Al tuo posto, parlerei con lui.</em></p><div class="ex">Suggerimento o raccomandazione.</div></div>
+  </div>
+</section>
+
+<section class="block">
+  <h3>Esercizio — Condizionale (QCM)</h3>
+  <div class="exo-block">
+    <div class="exo-head"><h4>Scegli la forma corretta del condizionale</h4></div>
+    <div class="exo-sub">Attenzione alle forme irregolari!</div>
+    <div id="qcm_cond"></div>
+  </div>
+</section>`;
+
+// ---------- IMPERATIVO ----------
+views['imperativo'] = `
+<div class="mod-header">
+  <span class="eyebrow">Unità 03 · Modo verbale</span>
+  <h2>L'Imperativo</h2>
+  <p>L'imperativo serve per dare ordini, istruzioni, consigli o richieste. In italiano esiste la forma informale (tu/voi/noi) e la forma formale di cortesia (Lei/Loro).</p>
+</div>
+
+<section class="block">
+  <h3>1. Imperativo affermativo — informale</h3>
+  <p>Si usa con persone conosciute, amici, familiari. La forma di <strong>tu</strong> è la più usata.</p>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Imperativo informale regolare</caption>
+    <thead><tr><th>Pronome</th><th>-ARE (parlare)</th><th>-ERE (scrivere)</th><th>-IRE (partire)</th><th>-IRE isc (finire)</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">tu</td><td><span class="root">parl</span><span class="end">a</span></td><td><span class="root">scriv</span><span class="end">i</span></td><td><span class="root">part</span><span class="end">i</span></td><td><span class="root">fin</span><span class="end">isci</span></td></tr>
+      <tr><td class="pron">noi</td><td><span class="root">parl</span><span class="end">iamo</span></td><td><span class="root">scriv</span><span class="end">iamo</span></td><td><span class="root">part</span><span class="end">iamo</span></td><td><span class="root">fin</span><span class="end">iamo</span></td></tr>
+      <tr><td class="pron">voi</td><td><span class="root">parl</span><span class="end">ate</span></td><td><span class="root">scriv</span><span class="end">ete</span></td><td><span class="root">part</span><span class="end">ite</span></td><td><span class="root">fin</span><span class="end">ite</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">🔔 La forma <em>tu</em> dei verbi in -ARE è uguale alla 3ª persona singolare del presente indicativo: <em>parla</em>, <em>mangia</em>, <em>studia</em>.</p>
+
+  <h3>2. Imperativo formale (Lei / Loro)</h3>
+  <p>Si usa con persone sconosciute, superiori, in contesti formali. Le forme <strong>Lei</strong> corrispondono al congiuntivo presente.</p>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Imperativo formale regolare</caption>
+    <thead><tr><th>Pronome</th><th>-ARE (parlare)</th><th>-ERE (scrivere)</th><th>-IRE (partire)</th><th>-IRE isc (finire)</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">Lei</td><td><span class="root">parl</span><span class="end">i</span></td><td><span class="root">scriv</span><span class="end">a</span></td><td><span class="root">part</span><span class="end">a</span></td><td><span class="root">fin</span><span class="end">isca</span></td></tr>
+      <tr><td class="pron">Loro</td><td><span class="root">parl</span><span class="end">ino</span></td><td><span class="root">scriv</span><span class="end">ano</span></td><td><span class="root">part</span><span class="end">ano</span></td><td><span class="root">fin</span><span class="end">iscano</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">📌 La forma <em>Loro</em> formale è molto rara nel parlato moderno; si preferisce <em>voi</em> anche in contesti formali.</p>
+
+  <h3>3. Verbi irregolari all'imperativo</h3>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Irregolari essenziali</caption>
+    <thead><tr><th>Verbo</th><th>tu</th><th>Lei</th><th>noi</th><th>voi</th></tr></thead>
+    <tbody>
+      <tr class="irr"><td>essere</td><td><span class="end">sii</span></td><td><span class="end">sia</span></td><td><span class="end">siamo</span></td><td><span class="end">siate</span></td></tr>
+      <tr class="irr"><td>avere</td><td><span class="end">abbi</span></td><td><span class="end">abbia</span></td><td><span class="end">abbiamo</span></td><td><span class="end">abbiate</span></td></tr>
+      <tr class="irr"><td>andare</td><td><span class="end">va' / vai</span></td><td><span class="end">vada</span></td><td><span class="end">andiamo</span></td><td><span class="end">andate</span></td></tr>
+      <tr class="irr"><td>fare</td><td><span class="end">fa' / fai</span></td><td><span class="end">faccia</span></td><td><span class="end">facciamo</span></td><td><span class="end">fate</span></td></tr>
+      <tr class="irr"><td>dare</td><td><span class="end">da' / dai</span></td><td><span class="end">dia</span></td><td><span class="end">diamo</span></td><td><span class="end">date</span></td></tr>
+      <tr class="irr"><td>stare</td><td><span class="end">sta' / stai</span></td><td><span class="end">stia</span></td><td><span class="end">stiamo</span></td><td><span class="end">state</span></td></tr>
+      <tr class="irr"><td>dire</td><td><span class="end">di'</span></td><td><span class="end">dica</span></td><td><span class="end">diciamo</span></td><td><span class="end">dite</span></td></tr>
+      <tr class="irr"><td>venire</td><td><span class="end">vieni</span></td><td><span class="end">venga</span></td><td><span class="end">veniamo</span></td><td><span class="end">venite</span></td></tr>
+      <tr class="irr"><td>sapere</td><td><span class="end">sappi</span></td><td><span class="end">sappia</span></td><td><span class="end">sappiamo</span></td><td><span class="end">sappiate</span></td></tr>
+      <tr class="irr"><td>uscire</td><td><span class="end">esci</span></td><td><span class="end">esca</span></td><td><span class="end">usciamo</span></td><td><span class="end">uscite</span></td></tr>
+      <tr class="irr"><td>tenere</td><td><span class="end">tieni</span></td><td><span class="end">tenga</span></td><td><span class="end">teniamo</span></td><td><span class="end">tenete</span></td></tr>
+      <tr class="irr"><td>scegliere</td><td><span class="end">scegli</span></td><td><span class="end">scelga</span></td><td><span class="end">scegliamo</span></td><td><span class="end">scegliete</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>4. Imperativo negativo</h3>
+  <p>La negazione si forma in modo diverso secondo la persona:</p>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Imperativo negativo</caption>
+    <thead><tr><th>Pronome</th><th>Struttura</th><th>Esempio (parlare)</th><th>Esempio (andare)</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">tu</td><td><strong>non + infinito</strong></td><td>Non <span class="end">parlare</span>!</td><td>Non <span class="end">andare</span>!</td></tr>
+      <tr><td class="pron">noi</td><td>non + imperativo noi</td><td>Non <span class="end">parliamo</span>!</td><td>Non <span class="end">andiamo</span>!</td></tr>
+      <tr><td class="pron">voi</td><td>non + imperativo voi</td><td>Non <span class="end">parlate</span>!</td><td>Non <span class="end">andate</span>!</td></tr>
+      <tr><td class="pron">Lei</td><td>non + imperativo Lei</td><td>Non <span class="end">parli</span>!</td><td>Non <span class="end">vada</span>!</td></tr>
+    </tbody>
+  </table></div>
+  <p class="alert">⛔ Solo con <em>tu</em> il negativo usa l'infinito: <em>Non mangiare!</em> (NON: ~~Non mangi!~~)</p>
+
+  <h3>5. Imperativo con i pronomi clitici</h3>
+  <p>I pronomi si <strong>attaccano alla fine</strong> dell'imperativo affermativo, ma restano <strong>separati e prima</strong> con il negativo.</p>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Posizione dei pronomi clitici con l'imperativo</caption>
+    <thead><tr><th>Tipo</th><th>Struttura</th><th>Esempio</th></tr></thead>
+    <tbody>
+      <tr><td>Affermativo (tu)</td><td>imperativo + pronome</td><td>Dimm<span class="end">elo</span>! · Mangia<span class="end">la</span>! · Dà<span class="end">mmi</span>!</td></tr>
+      <tr><td>Affermativo (voi)</td><td>imperativo + pronome</td><td>Parlate<span class="end">gli</span>! · Dite<span class="end">lo</span>!</td></tr>
+      <tr><td>Negativo (tu)</td><td>non + pronome + infinito</td><td>Non <span class="end">lo</span> dire! · Non <span class="end">mi</span> aspettare!</td></tr>
+      <tr><td>Formale (Lei)</td><td>pronome + imperativo</td><td><span class="end">Lo</span> faccia! · <span class="end">Mi</span> dica!</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Raddoppio consonantico con i monosillabi</h4>
+  <p>Con <em>va', fa', da', sta', di'</em> e un pronome monosillabo, la consonante iniziale del pronome raddoppia:</p>
+  <ul class="examples">
+    <li><span class="it">Dimmi! (di' + mi)</span><span class="fr"> — Dimmi!</span></li>
+    <li><span class="it">Fallo! (fa' + lo)</span><span class="fr"> — Fallo!</span></li>
+    <li><span class="it">Vacci! (va' + ci)</span><span class="fr"> — Vacci!</span></li>
+    <li><span class="it">Dammelo! (da' + mi + lo)</span><span class="fr"> — Dammelo!</span></li>
+    <li><span class="it">Stammi a sentire! (sta' + mi)</span><span class="fr"> — Stammi a sentire!</span></li>
+  </ul>
+  <p class="note">⚠ Eccezione: <em>gli</em> non raddoppia mai: <em>dagli</em>, <em>fagli</em>, <em>vagli</em>.</p>
+
+  <h3>6. Usi comunicativi dell'imperativo</h3>
+  <div class="usage-grid">
+    <div class="usage-card"><div class="lbl">Ordine diretto</div><p><em>Siediti!</em> / <em>Stia fermo!</em></p><div class="ex">Tono autoritario o urgente.</div></div>
+    <div class="usage-card"><div class="lbl">Consiglio / Invito</div><p><em>Prova questo piatto!</em></p><div class="ex">Tono amichevole, informale.</div></div>
+    <div class="usage-card"><div class="lbl">Istruzione / Ricetta</div><p><em>Aggiungete un pizzico di sale.</em></p><div class="ex">Tono neutro, scritto o parlato.</div></div>
+    <div class="usage-card"><div class="lbl">Divieto</div><p><em>Non toccare!</em> / <em>Non fumare.</em></p><div class="ex">Negazione, spesso su cartelli.</div></div>
+    <div class="usage-card"><div class="lbl">Esortazione (noi)</div><p><em>Andiamo!</em> / <em>Facciamo una pausa.</em></p><div class="ex">Proposta collettiva, come "let's" in inglese.</div></div>
+    <div class="usage-card"><div class="lbl">Risposta telefonica formale</div><p><em>Mi dica.</em> / <em>Prego, si accomodi.</em></p><div class="ex">Cortesia formale con Lei.</div></div>
+  </div>
+
+  <h3>7. Imperativo vs altre strutture</h3>
+  <p>In italiano si può attenuare un ordine usando alternative più cortesi:</p>
+  <ul class="examples">
+    <li><span class="it">Imperativo diretto: Chiudi la finestra!</span><span class="fr"> — Tono brusco.</span></li>
+    <li><span class="it">Condizionale: Potresti chiudere la finestra?</span><span class="fr"> — Tono educato.</span></li>
+    <li><span class="it">Infinito: Chiudere la finestra, prego.</span><span class="fr"> — Tono neutro (avvisi, istruzioni).</span></li>
+    <li><span class="it">Congiuntivo esortativo: Che qualcuno chiuda!</span><span class="fr"> — Tono indiretto, desiderio.</span></li>
+  </ul>
+</section>
+
+<section class="block">
+  <h3>Esercizio — Imperativo (QCM)</h3>
+  <div class="exo-block">
+    <div class="exo-head"><h4>Scegli la forma imperativa corretta</h4></div>
+    <div class="exo-sub">Attenzione al contesto formale/informale e ai pronomi clitici!</div>
+    <div id="qcm_imp"></div>
+  </div>
+</section>`;
+
+// ---------- PRONOMI ----------
+views['pronomi'] = `
+<div class="mod-header">
+  <span class="eyebrow">Unità 04 · Pronomi</span>
+  <h2>I Pronomi</h2>
+  <p>I pronomi sostituiscono nomi già menzionati, rendendo il discorso più fluido. In italiano esistono pronomi diretti, indiretti e combinati.</p>
+</div>
+
+<section class="block">
+  <h3>Pronomi diretti (complemento oggetto)</h3>
+  <div class="pron-grid">
+    <div class="pron-cell"><div class="who">io → mi</div><div class="form">mi</div></div>
+    <div class="pron-cell"><div class="who">tu → ti</div><div class="form">ti</div></div>
+    <div class="pron-cell"><div class="who">lui → lo</div><div class="form">lo</div></div>
+    <div class="pron-cell"><div class="who">lei → la</div><div class="form">la</div></div>
+    <div class="pron-cell"><div class="who">noi → ci</div><div class="form">ci</div></div>
+    <div class="pron-cell"><div class="who">voi → vi</div><div class="form">vi</div></div>
+    <div class="pron-cell"><div class="who">loro (m) → li</div><div class="form">li</div></div>
+    <div class="pron-cell"><div class="who">loro (f) → le</div><div class="form">le</div></div>
+  </div>
+  <ul class="examples">
+    <li><span class="it">Mangio <strong>la pizza</strong> → <strong>La</strong> mangio.</span></li>
+    <li><span class="it">Chiamo <strong>i ragazzi</strong> → <strong>Li</strong> chiamo.</span></li>
+    <li><span class="it">Ha visto <strong>me</strong>? → <strong>Mi</strong> ha visto?</span></li>
+  </ul>
+
+  <h3>Pronomi indiretti (complemento indiretto)</h3>
+  <div class="pron-grid">
+    <div class="pron-cell"><div class="who">a me</div><div class="form">mi</div></div>
+    <div class="pron-cell"><div class="who">a te</div><div class="form">ti</div></div>
+    <div class="pron-cell"><div class="who">a lui</div><div class="form">gli</div></div>
+    <div class="pron-cell"><div class="who">a lei</div><div class="form">le</div></div>
+    <div class="pron-cell"><div class="who">a noi</div><div class="form">ci</div></div>
+    <div class="pron-cell"><div class="who">a voi</div><div class="form">vi</div></div>
+    <div class="pron-cell"><div class="who">a loro</div><div class="form">gli / loro</div></div>
+  </div>
+  <ul class="examples">
+    <li><span class="it">Scrivo <strong>a Maria</strong> → <strong>Le</strong> scrivo.</span></li>
+    <li><span class="it">Telefono <strong>a Marco</strong> → <strong>Gli</strong> telefono.</span></li>
+    <li><span class="it">Parlo <strong>ai ragazzi</strong> → <strong>Gli</strong> parlo (familiare) / parlo <strong>loro</strong> (formale).</span></li>
+  </ul>
+
+  <h3>Pronomi combinati (doppi)</h3>
+  <p>Quando si usano insieme un pronome indiretto e uno diretto, si fondono in un unico elemento:</p>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Tabella dei pronomi combinati</caption>
+    <thead><tr><th></th><th>lo</th><th>la</th><th>li</th><th>le</th><th>ne</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">mi</td><td>me lo</td><td>me la</td><td>me li</td><td>me le</td><td>me ne</td></tr>
+      <tr><td class="pron">ti</td><td>te lo</td><td>te la</td><td>te li</td><td>te le</td><td>te ne</td></tr>
+      <tr><td class="pron">gli/le</td><td>glielo</td><td>gliela</td><td>glieli</td><td>gliele</td><td>gliene</td></tr>
+      <tr><td class="pron">ci</td><td>ce lo</td><td>ce la</td><td>ce li</td><td>ce le</td><td>ce ne</td></tr>
+      <tr><td class="pron">vi</td><td>ve lo</td><td>ve la</td><td>ve li</td><td>ve le</td><td>ve ne</td></tr>
+      <tr><td class="pron">gli (loro)</td><td>glielo</td><td>gliela</td><td>glieli</td><td>gliele</td><td>gliene</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="examples">
+    <li><span class="it">Do il libro a Marco → <strong>Glielo</strong> do.</span></li>
+    <li><span class="it">Manda le foto a noi → <strong>Cecele</strong> manda. → <strong>Ce le</strong> manda.</span></li>
+  </ul>
+
+  <h3>Il pronome "ne"</h3>
+  <p><em>Ne</em> sostituisce una parte o un insieme già menzionato, o una frase con <em>di + infinito</em>.</p>
+  <ul class="examples">
+    <li><span class="it">Quanti caffè vuoi? — <strong>Ne</strong> voglio due.</span><span class="fr"> — Di caffè, ne voglio due.</span></li>
+    <li><span class="it">Hai parlato del problema? — Sì, <strong>ne</strong> ho parlato.</span></li>
+  </ul>
+
+  <h3>Il pronome "ci"</h3>
+  <p><em>Ci</em> sostituisce un luogo (<em>a Roma, lì</em>) o una frase con <em>a + infinito / che</em>.</p>
+  <ul class="examples">
+    <li><span class="it">Vai a Roma? — Sì, <strong>ci</strong> vado domani.</span></li>
+    <li><span class="it">Credi alle fate? — No, non <strong>ci</strong> credo.</span></li>
+  </ul>
+</section>
+
+<section class="block">
+  <h3>Esercizio — Pronomi (QCM)</h3>
+  <div class="exo-block">
+    <div class="exo-head"><h4>Scegli il pronome corretto</h4></div>
+    <div class="exo-sub">Attenzione ai pronomi combinati!</div>
+    <div id="qcm_pron"></div>
+  </div>
+</section>`;
+
+// ---------- MODO (INDICATIVO vs CONGIUNTIVO vs CONDIZIONALE) ----------
+views['modo'] = `
+<div class="mod-header">
+  <span class="eyebrow">Unità 05 · Scelta del modo</span>
+  <h2>Indicativo, Congiuntivo o Condizionale?</h2>
+  <p>Capire quale modo usare dipende dal tipo di verbo o espressione nella frase principale. Questa unità raccoglie le strutture essenziali.</p>
+</div>
+
+<section class="block">
+  <h3>1. Espressioni che reggono l'INDICATIVO</h3>
+  <p>Si usa l'indicativo quando si esprime un fatto certo, oggettivo o constatato.</p>
+  <div class="usage-grid">
+    <div class="usage-card"><div class="lbl">Certezza</div><p><em>È certo / È ovvio / È chiaro / È evidente che...</em></p><div class="ex">È evidente che <strong>ha ragione</strong>.</div></div>
+    <div class="usage-card"><div class="lbl">Percezione diretta</div><p><em>Vedo / Sento / Sento che...</em></p><div class="ex">Vedo che <strong>sei stanco</strong>.</div></div>
+    <div class="usage-card"><div class="lbl">Dichiarazione</div><p><em>Dice / Afferma / Sostiene che...</em></p><div class="ex">Dice che <strong>arriverà</strong> tardi.</div></div>
+    <div class="usage-card"><div class="lbl">Constatazione</div><p><em>Risulta / Si vede / Appare che...</em></p><div class="ex">Risulta che <strong>l'ufficio è chiuso</strong>.</div></div>
+    <div class="usage-card"><div class="lbl">Causa</div><p><em>Dato che / Poiché / Visto che...</em></p><div class="ex">Dato che <strong>piove</strong>, resto a casa.</div></div>
+    <div class="usage-card"><div class="lbl">Tempo / Luogo reale</div><p><em>Quando / Dove / Come...</em> (fatti reali)</p><div class="ex">Quando <strong>arrivo</strong>, ti chiamo.</div></div>
+  </div>
+
+  <h3>2. Espressioni che reggono il CONGIUNTIVO</h3>
+  <p>Si usa il congiuntivo dopo verbi e strutture che esprimono soggettività, dubbio, emozione, volontà, ipotesi.</p>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Categorie principali che reggono il congiuntivo</caption>
+    <thead><tr><th>Categoria</th><th>Espressioni</th><th>Esempio</th></tr></thead>
+    <tbody>
+      <tr><td>Opinione / Dubbio</td><td>pensare, credere, supporre, dubitare, ritenere che...</td><td>Penso che <span class="end">abbia ragione</span>.</td></tr>
+      <tr><td>Emozione</td><td>essere felice, triste, sorpreso, contento che...</td><td>Sono felice che tu <span class="end">sia</span> qui.</td></tr>
+      <tr><td>Volontà / Desiderio</td><td>volere, sperare, augurarsi, desiderare che...</td><td>Voglio che tu <span class="end">studi</span>.</td></tr>
+      <tr><td>Timore / Paura</td><td>temere, avere paura, preoccuparsi che...</td><td>Temo che <span class="end">sia</span> tardi.</td></tr>
+      <tr><td>Necessità / Obbligo</td><td>bisogna, occorre, è necessario / utile / importante che...</td><td>Bisogna che tu <span class="end">venga</span>.</td></tr>
+      <tr><td>Impersonali negativo</td><td>non è certo / ovvio / sicuro che...</td><td>Non è sicuro che <span class="end">venga</span>.</td></tr>
+      <tr><td>Concessione</td><td>benché, sebbene, nonostante, malgrado...</td><td>Benché <span class="end">piova</span>, esco.</td></tr>
+      <tr><td>Scopo</td><td>affinché, perché (+ congiuntivo)...</td><td>Parlo lentamente perché tu <span class="end">capisca</span>.</td></tr>
+      <tr><td>Condizione</td><td>a condizione che, purché, a patto che...</td><td>Vengo purché tu <span class="end">aspetti</span>.</td></tr>
+      <tr><td>Prima che / Prima di</td><td>prima che (+ congiunti.), prima di (+ infinito)</td><td>Chiama prima che <span class="end">parta</span>.</td></tr>
+      <tr><td>Ipotesi irreale</td><td>se + congiuntivo imperfetto / trapassato</td><td>Se <span class="end">potessi</span>, verrei.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">📌 Regola d'oro: se i due verbi hanno lo <strong>stesso soggetto</strong>, si usa l'infinito (non il congiuntivo): <em>Voglio <strong>partire</strong></em> (non ~~Voglio che io parta~~).</p>
+
+  <h3>3. Espressioni che reggono il CONDIZIONALE</h3>
+  <div class="usage-grid">
+    <div class="usage-card"><div class="lbl">Periodo ipotetico (apodosi)</div><p><em>Se + congiuntivo → condizionale presente</em></p><div class="ex">Se <strong>avessi</strong> tempo, <strong>studierei</strong>.</div></div>
+    <div class="usage-card"><div class="lbl">Periodo ipotetico (passato)</div><p><em>Se + trapassato → condizionale passato</em></p><div class="ex">Se <strong>avessi studiato</strong>, <strong>avrei superato</strong> l'esame.</div></div>
+    <div class="usage-card"><div class="lbl">Volere + condizionale</div><p><em>Vorrei / mi piacerebbe + infinito</em></p><div class="ex">Mi <strong>piacerebbe</strong> andare in Italia.</div></div>
+    <div class="usage-card"><div class="lbl">Consiglio</div><p><em>Al tuo posto + condizionale</em></p><div class="ex">Al tuo posto, <strong>parlerei</strong> con lui.</div></div>
+    <div class="usage-card"><div class="lbl">Dovrebbe (obbligo attenuato)</div><p><em>Dovrebbe / Dovresti...</em></p><div class="ex"><strong>Dovresti</strong> chiamarla prima.</div></div>
+    <div class="usage-card"><div class="lbl">Notizia non confermata</div><p><em>Secondo + fonte + condizionale</em></p><div class="ex">Secondo i giornali, <strong>avrebbe vinto</strong>.</div></div>
+  </div>
+
+  <h3>4. Schema riassuntivo — quale modo?</h3>
+  <div class="tbl-wrap"><table class="conj">
+    <caption>Tabella di scelta rapida</caption>
+    <thead><tr><th>Contesto</th><th>Modo</th></tr></thead>
+    <tbody>
+      <tr><td>Fatto reale, certezza</td><td><span class="end">Indicativo</span></td></tr>
+      <tr><td>Opinione soggettiva, dubbio, emozione, volontà</td><td><span class="end">Congiuntivo</span></td></tr>
+      <tr><td>Ipotesi irreale o passata, desiderio, cortesia</td><td><span class="end">Condizionale</span></td></tr>
+      <tr><td>Ordine / istruzione diretto</td><td><span class="end">Imperativo</span></td></tr>
+      <tr><td>Azione in corso (narrativa o commento)</td><td><span class="end">Gerundio</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="block">
+  <h3>Esercizio — Quale modo? (QCM)</h3>
+  <div class="exo-block">
+    <div class="exo-head"><h4>Scegli il modo e la forma corretti</h4></div>
+    <div class="exo-sub">Indicativo, congiuntivo o condizionale?</div>
+    <div id="qcm_modo"></div>
+  </div>
+</section>`;
+
+// ---------- VOCABOLARIO ----------
+views['vocabolario'] = `
+<div class="mod-header">
+  <span class="eyebrow">Unità 06 · Lessico</span>
+  <h2>Vocabolario tematico</h2>
+  <p>Parole e espressioni chiave per i temi più frequenti al livello B1/B2. Clicca su una carta per vedere la traduzione e il contesto d'uso.</p>
+</div>
+
+<section class="block">
+  <h3>Emozioni e stati d'animo</h3>
+  <div class="voc-grid" id="voc_emozioni"></div>
+
+  <h3>Lavoro e carriera</h3>
+  <div class="voc-grid" id="voc_lavoro"></div>
+
+  <h3>Ambiente e natura</h3>
+  <div class="voc-grid" id="voc_ambiente"></div>
+
+  <h3>Città e vita quotidiana</h3>
+  <div class="voc-grid" id="voc_citta"></div>
+
+  <h3>Connettivi e avverbi utili (B2)</h3>
+  <div class="voc-grid" id="voc_connettivi"></div>
+</section>
+
+<section class="block">
+  <h3>Esercizio — Vocabolario (QCM)</h3>
+  <div class="exo-block">
+    <div class="exo-head"><h4>Scegli la parola giusta</h4></div>
+    <div class="exo-sub">Seleziona il termine che completa meglio la frase.</div>
+    <div id="qcm_voc"></div>
+  </div>
+</section>`;
+
+// ============================================================
+// VOCABULARY DATA
+// ============================================================
+const VOC = {
+  emozioni:[
+    {w:'la gioia',ph:'[ˈdʒɔja]',t:'la gioia, la felicità (joy/happiness)'},
+    {w:'la tristezza',ph:'[triˈstettsa]',t:'la tristezza, il dolore (sadness)'},
+    {w:'la nostalgia',ph:'[nostaˈlʒia]',t:'il desiderio del passato o di casa (nostalgia/homesickness)'},
+    {w:'l\'entusiasmo',ph:'[entuˈzjazmo]',t:'grande passione ed energia (enthusiasm)'},
+    {w:'l\'ansia',ph:'[ˈanzja]',t:'preoccupazione, inquietudine (anxiety)'},
+    {w:'la delusione',ph:'[deluˈzjone]',t:'disappunto quando le aspettative non si realizzano (disappointment)'},
+    {w:'la gelosia',ph:'[dʒeloˈzia]',t:'paura di perdere qualcosa o qualcuno (jealousy)'},
+    {w:'la soddisfazione',ph:'[soddisfatˈtsjone]',t:'piacere per qualcosa riuscito bene (satisfaction)'},
+    {w:'la rabbia',ph:'[ˈrabbja]',t:'emozione forte di irritazione o collera (anger)'},
+    {w:'la vergogna',ph:'[verˈɡoɲɲa]',t:'imbarazzo per qualcosa di sbagliato fatto (shame/embarrassment)'},
+  ],
+  lavoro:[
+    {w:'il colloquio',ph:'[kolˈlɔkwjo]',t:'intervista di lavoro o riunione (job interview / meeting)'},
+    {w:'il curriculum',ph:'[kurˈrikulum]',t:'documento con esperienze e formazione (CV / résumé)'},
+    {w:'la mansione',ph:'[manˈsjone]',t:'compito specifico assegnato al lavoro (task/duty)'},
+    {w:'il contratto a tempo indeterminato',ph:'',t:'contratto lavorativo permanente (permanent contract)'},
+    {w:'lo stage',ph:'[stɛdʒ]',t:'tirocinio, pratica lavorativa (internship)'},
+    {w:'il sindacato',ph:'[sindaˈkato]',t:'organizzazione che tutela i lavoratori (trade union)'},
+    {w:'la retribuzione',ph:'[retribudˈtsjone]',t:'stipendio, compenso per il lavoro (salary/pay)'},
+    {w:'il burnout',ph:'[bɛrnˈawt]',t:'esaurimento da stress lavorativo eccessivo (burnout)'},
+    {w:'il telelavoro',ph:'[teleˈlavoro]',t:'lavorare da casa o da remoto (remote work)'},
+    {w:'la formazione',ph:'[formatˈtsjone]',t:'training, aggiornamento professionale (training/education)'},
+  ],
+  ambiente:[
+    {w:'il cambiamento climatico',ph:'',t:'variazione del clima su scala globale (climate change)'},
+    {w:'le emissioni di CO₂',ph:'',t:'gas prodotti dalla combustione (CO₂ emissions)'},
+    {w:'la siccità',ph:'[siˈttʃita]',t:'mancanza prolungata di pioggia (drought)'},
+    {w:'la deforestazione',ph:'',t:'abbattimento massiccio di boschi e foreste (deforestation)'},
+    {w:'le energie rinnovabili',ph:'',t:'solare, eolico, idroelettrico (renewable energies)'},
+    {w:'l\'impronta ecologica',ph:'',t:'impatto ambientale di un individuo o prodotto (ecological footprint)'},
+    {w:'la biodiversità',ph:'',t:'varietà degli esseri viventi in un ecosistema (biodiversity)'},
+    {w:'il riciclo',ph:'[riˈtʃiklo]',t:'processo di riutilizzo dei materiali (recycling)'},
+    {w:'l\'inquinamento',ph:'[iŋkwinaˈmento]',t:'contaminazione di aria, acqua, suolo (pollution)'},
+    {w:'la sostenibilità',ph:'',t:'sviluppo che rispetta le risorse naturali (sustainability)'},
+  ],
+  citta:[
+    {w:'il quartiere',ph:'[kwarˈtjɛre]',t:'zona o distretto di una città (neighbourhood)'},
+    {w:'il tragitto',ph:'[traˈdʒitto]',t:'percorso, spostamento da un luogo all\'altro (commute/route)'},
+    {w:'la periferia',ph:'[perifeˈria]',t:'zona ai margini della città (outskirts/suburbs)'},
+    {w:'il marciapiede',ph:'[martʃaˈpjɛde]',t:'area pedonale a lato della strada (pavement/sidewalk)'},
+    {w:'il semaforo',ph:'[seˈmaforo]',t:'impianto luminoso per regolare il traffico (traffic light)'},
+    {w:'la tassa',ph:'[ˈtassa]',t:'contributo obbligatorio allo Stato (tax)'},
+    {w:'lo sportello',ph:'[sporˈtello]',t:'punto di assistenza o servizio al pubblico (counter/desk)'},
+    {w:'il vigile',ph:'[ˈvidʒile]',t:'agente della polizia municipale (traffic warden)'},
+    {w:'l\'affitto',ph:'[afˈfitto]',t:'canone mensile per abitare un immobile (rent)'},
+    {w:'la bolletta',ph:'[bolˈletta]',t:'fattura per gas, luce, acqua (utility bill)'},
+  ],
+  connettivi:[
+    {w:'tuttavia',ph:'',t:'però, nonostante ciò (however/nevertheless)'},
+    {w:'pertanto',ph:'',t:'quindi, di conseguenza (therefore)'},
+    {w:'anziché',ph:'',t:'invece di (rather than/instead of)'},
+    {w:'sebbene',ph:'',t:'benché, nonostante (although)'},
+    {w:'poiché',ph:'',t:'dato che, perché (since/because)'},
+    {w:'affinché',ph:'',t:'perché + congiuntivo, allo scopo di (so that)'},
+    {w:'purché',ph:'',t:'a condizione che (provided that)'},
+    {w:'nel frattempo',ph:'',t:'nel tempo che intercorre (meanwhile)'},
+    {w:'d\'altronde',ph:'',t:'d\'altra parte, del resto (on the other hand)'},
+    {w:'semmai',ph:'',t:'caso mai, piuttosto (if anything)'},
+  ]
+};
+
+function renderVocCards(containerId, items){
+  const wrap = document.getElementById(containerId);
+  if(!wrap) return;
+  wrap.innerHTML = items.map((item,i)=>`
+    <div class="voc-card" onclick="this.classList.toggle('revealed')" id="vc_${containerId}_${i}">
+      <div class="it-word">${item.w}</div>
+      ${item.ph ? `<div class="it-phon">${item.ph}</div>` : ''}
+      <div class="it-trans">${item.t}</div>
+      <div class="reveal-hint">↓ clicca per la traduzione</div>
+    </div>`).join('');
+}
+
+// ============================================================
+// QCM DATA
+// ============================================================
+const Q_CONG = [
+  {q:'Penso che Maria _____ a Roma domani. (andare)',opts:['va','vada','andasse','andrà'],ans:1},
+  {q:'È importante che tu _____ i compiti. (finire)',opts:['finisce','finisci','finisca','finisse'],ans:2},
+  {q:'Sebbene _____ stanco, ha continuato a lavorare. (essere)',opts:['è','sia','era','fosse'],ans:1},
+  {q:'Voglio che loro _____ la verità. (sapere)',opts:['sanno','sapranno','sappiano','sapessero'],ans:2},
+  {q:'Non credo che lui _____ già mangiato. (avere)',opts:['ha','abbia','aveva','avrà'],ans:1},
+  {q:'Era necessario che lei _____ subito. (partire)',opts:['parte','parta','partisse','partirebbe'],ans:2},
+  {q:'Benché _____, sono uscito lo stesso. (piovere)',opts:['piove','pioveva','piova','piovesse'],ans:3},
+  {q:'Spero che tu _____ bene all\'esame. (fare)',opts:['fai','faccia','facevi','farai'],ans:1},
+];
+
+const Q_COND = [
+  {q:'Al posto tuo, _____ subito al medico. (andare)',opts:['vado','andrei','sono andato','andrò'],ans:1},
+  {q:'Se avessi i soldi, _____ una casa in Toscana. (comprare)',opts:['compro','comprerò','comprerei','comprassi'],ans:2},
+  {q:'_____ un caffè, per favore. (volere)',opts:['Voglio','Vorrò','Vorrei','Voglia'],ans:2},
+  {q:'Secondo i giornali, il ministro _____ le dimissioni. (presentare)',opts:['presenta','presenterà','avrebbe presentato','presentasse'],ans:2},
+  {q:'Se _____ studiato, avresti superato l\'esame. (avere)',opts:['avessi','hai','abbia','avresti'],ans:0},
+  {q:'Mi _____ vivere in Italia. (piacere)',opts:['piace','piacerà','piacerebbe','piacesse'],ans:2},
+  {q:'_____ venire, ma sono occupato. (potere)',opts:['Posso','Potrei','Potrò','Possa'],ans:1},
+  {q:'Dovresti _____ con il tuo capo di questo problema. (parlare)',opts:['parlare','parli','parlassi','parlerai'],ans:0},
+];
+
+const Q_IMP = [
+  {q:'(tu - informale) _____ questo libro, è bellissimo! (leggere)',opts:['Legge','Leggi','Legga','Leggete'],ans:1},
+  {q:'(Lei - formale) _____ pure, dottore. (accomodarsi)',opts:['Accomodati','Accomodatevi','Si accomodi','Si accomoda'],ans:2},
+  {q:'(tu - negativo) Non _____ lì! È pericoloso. (andare)',opts:['non vai','non va\'','non andare','non andaste'],ans:2},
+  {q:'(voi) _____ le valigie prima di mezzanotte! (fare)',opts:['Fate','Fai','Faccia','Facciamo'],ans:0},
+  {q:'Marco vuole il libro. _____ ! (darglielo - tu)',opts:['Daiglielo','Daglielo','Glielo da\'','Dàglielo'],ans:3},
+  {q:'(tu - informale, dire) _____ la verità!',opts:['Dici','Di\'','Dica','Dicevi'],ans:1},
+  {q:'(noi) _____ una pausa caffè!',opts:['Facciamo','Fai','Fatemi','Faccia'],ans:0},
+  {q:'(Lei - negativo) Non _____ preoccupata, signora. (essere)',opts:['non essere','non sia','non è','non stia'],ans:1},
+  {q:'Hai il cellulare in tasca? _____ fuori! (tirarlo - tu)',opts:['Tiralo','Tirarlo','Lo tira','Tirali'],ans:0},
+  {q:'(tu - fa\' + lo) _____ adesso, non dopo!',opts:['Fallo','Failo','Lo fa\'','Fai lo'],ans:0},
+];
+
+const Q_PRON = [
+  {q:'Hai visto Marco? — Sì, _____ ho visto ieri.',opts:['gli','lo','la','ne'],ans:1},
+  {q:'Dai il regalo a tua sorella? — Sì, _____ do subito.',opts:['glielo','le lo','lo le','gli la'],ans:0},
+  {q:'Quante pizze mangi? — _____ mangio solo una.',opts:['La','Ne','Ci','Le'],ans:1},
+  {q:'Vai spesso a Milano? — Sì, _____ vado ogni mese.',opts:['ne','ci','vi','lo'],ans:1},
+  {q:'Hai parlato dei problemi con il capo? — Sì, _____ ho parlato.',opts:['lo','ci','ne','gli'],ans:2},
+  {q:'Credi agli UFO? — No, non _____ credo.',opts:['ne','ci','li','gli'],ans:1},
+  {q:'Maria mi ha dato le chiavi. _____ ha dato stamattina.',opts:['Me le','Glielo','Le me','Ce le'],ans:0},
+  {q:'Telefoni spesso ai tuoi genitori? — _____ telefono ogni domenica.',opts:['Li','Gli','Ne','Ci'],ans:1},
+];
+
+const Q_MODO = [
+  {q:'È ovvio che lui _____ ragione su questo punto. (avere)',opts:['abbia','ha','avrebbe','avesse'],ans:1},
+  {q:'Voglio che tu _____ questo modulo entro oggi. (compilare)',opts:['compili','compila','compilassi','avrebbe compilato'],ans:0},
+  {q:'Se _____ più tempo, mi iscriverei a un corso di yoga. (avere)',opts:['ho','avrò','avessi','abbia'],ans:2},
+  {q:'Sono contenta che tu _____ venuto alla festa. (essere)',opts:['sei','saresti','sia','fossi'],ans:2},
+  {q:'Dato che _____ tardi, decidiamo di mangiare fuori. (essere)',opts:['sia','sarebbe','è','fosse'],ans:2},
+  {q:'Perché tu _____ capire, parlo piano. (potere — scopo)',opts:['puoi','possa','potresti','potrà'],ans:1},
+  {q:'Al tuo posto, _____ una parola con il direttore. (avere)',opts:['ho','abbia','avrei','avessi'],ans:2},
+  {q:'Benché _____ molto, non ha mai vinto una gara. (allenarsi)',opts:['si allena','si alleni','si alleasse','si sarebbe allenato'],ans:1},
+  {q:'Secondo le previsioni, domani _____ bel tempo. (fare)',opts:['faccia','farà','farebbe','facesse'],ans:1},
+  {q:'Prima che lui _____, dobbiamo dirglielo. (partire)',opts:['parte','parta','è partito','partirà'],ans:1},
+];
+
+const Q_VOC = [
+  {q:'Dopo tanti anni lontano dall\'Italia, ha provato una forte _____ per i luoghi della sua infanzia.',opts:['gelosia','nostalgia','soddisfazione','vergogna'],ans:1},
+  {q:'Ho un _____ di lavoro domani mattina per un posto da programmatore.',opts:['sindacato','contratto','colloquio','burnout'],ans:2},
+  {q:'La _____ del pianeta è una delle sfide più urgenti del nostro secolo.',opts:['periferia','sostenibilità','bolletta','mansione'],ans:1},
+  {q:'Il governo ha ridotto le _____ industriali di CO₂ del 20% in cinque anni.',opts:['emissioni','siccità','tasse','bollette'],ans:0},
+  {q:'_____ io abbia studiato molto, questa grammatica è ancora difficile per me.',opts:['Pertanto','Sebbene','Affinché','Anziché'],ans:1},
+  {q:'Vivo in _____ di Roma, lontano dal centro storico.',opts:['un quartiere','una periferia','un marciapiede','uno sportello'],ans:1},
+  {q:'Non ho potuto dormire tutta la notte a causa dell\'_____ per l\'esame di domani.',opts:['entusiasmo','ansia','gioia','delusione'],ans:1},
+  {q:'Il _____ mi permette di lavorare da casa tre giorni alla settimana.',opts:['sindacato','stage','telelavoro','curriculum'],ans:2},
+  {q:'_____ aspettare altri 20 minuti, prendiamo un taxi.',opts:['Pertanto','Anziché','Purché','Semmai'],ans:1},
+  {q:'La _____ degli animali selvatici è minacciata dall\'inquinamento e dalla deforestazione.',opts:['siccità','biodiversità','formazione','retribuzione'],ans:1},
+];
+
+// ============================================================
+// INIT
+// ============================================================
+function buildViews(){
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  Object.keys(views).forEach(id=>{
+    const div = document.createElement('div');
+    div.className = 'view';
+    div.id = 'view-'+id;
+    div.innerHTML = views[id];
+    main.appendChild(div);
+  });
+}
+
+function initExercises(){
+  qcm('qcm_cong', Q_CONG);
+  qcm('qcm_cond', Q_COND);
+  qcm('qcm_imp',  Q_IMP);
+  qcm('qcm_pron', Q_PRON);
+  qcm('qcm_modo', Q_MODO);
+  qcm('qcm_voc',  Q_VOC);
+  // Vocabulary cards
+  renderVocCards('voc_emozioni',    VOC.emozioni);
+  renderVocCards('voc_lavoro',      VOC.lavoro);
+  renderVocCards('voc_ambiente',    VOC.ambiente);
+  renderVocCards('voc_citta',       VOC.citta);
+  renderVocCards('voc_connettivi',  VOC.connettivi);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderNav();
+  buildViews();
+  initExercises();
+  showView('home');
+});
+</script>
+</body>
+</html>
